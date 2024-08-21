@@ -1,8 +1,18 @@
+
+
 const fs=require('fs')
-let opr=process.argv[2]
-let filename=process.argv[3]
-let data=process.argv[4]
-let newFile=process.argv[5]
+const { sum } = require('./math')
+const opr=process.argv[2]
+const filename=process.argv[3]
+const data=process.argv[4]
+const newFile=process.argv[5]
+
+let a=process.argv[6]
+let b=process.argv[7]
+console.log(sum(a,b));
+
+
+
 
 
 const createfile=()=>{
@@ -31,11 +41,25 @@ const renameFile=()=>{
     })
 }
 
-
+const deletefile=()=>{
+    fs.unlink(filename,(err)=>{
+        if(err){
+            console.log(err);
+            
+        }
+        else{
+            console.log("delete file");
+            
+        }
+    })
+}
 if(opr=="create"){
     createfile()
     
  }
 if(opr=="rename"){
     renameFile()
+}
+if(opr=="delete"){
+    deletefile()
 }
